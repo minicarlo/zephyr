@@ -347,7 +347,9 @@ wget --spider -r -nd -nv -o linkcheck.log https://minicarlo.github.io/zephyr/
 | Fix links | 🔴 Critical | ✅ Done | Subagent | Feb 7 |
 | GitHub Pages | 🔴 Critical | ⏳ Pending | Carlo | Feb 7 |
 | Demo video | 🟡 Important | ⏳ Pending | Carlo | Feb 8 |
-| Contact email | 🔴 Critical | ⏳ Pending | Carlo | Feb 7 |
+| Contact email | 🔴 Critical | ✅ Done | Subagent | Feb 7 |
+| Rename programs dir | 🔴 Critical | ⏳ Pending | Subagent | Feb 7 |
+| Update Anchor.toml | 🔴 Critical | ⏳ Pending | Subagent | Feb 7 |
 | README update | 🟡 Important | ⏳ Pending | Carlo | Feb 8 |
 | Submission form | 🔴 Critical | ⏳ Pending | Carlo | Feb [X] |
 
