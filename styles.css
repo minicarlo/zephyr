@@ -435,36 +435,37 @@ body {
 }
 
 .tech-logo {
-    font-size: 2.5rem;
-    font-weight: 800;
-}
-
-.tech-logo.solana {
-    color: #9945FF;
-}
-
-.tech-logo.jupiter {
-    color: var(--primary);
-}
-
-.tech-logo.pyth {
-    color: #E6FB03;
-}
-
-.tech-logo.anchor {
-    width: 50px;
-    height: 50px;
-    background: var(--secondary);
-    border-radius: 50%;
+    width: 64px;
+    height: 64px;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
+.tech-logo svg {
+    width: 100%;
+    height: 100%;
+    transition: transform 0.3s ease;
+}
+
+.tech-card:hover .tech-logo svg {
+    transform: scale(1.1);
+}
+
+.tech-logo.solana svg {
+    filter: drop-shadow(0 0 10px rgba(153, 69, 255, 0.4));
+}
+
+.tech-logo.jupiter svg {
+    filter: drop-shadow(0 0 10px rgba(20, 241, 149, 0.4));
+}
+
+.tech-logo.pyth svg {
+    filter: drop-shadow(0 0 10px rgba(230, 251, 3, 0.4));
+}
+
 .tech-logo.anchor svg {
-    width: 24px;
-    height: 24px;
-    fill: white;
+    filter: drop-shadow(0 0 10px rgba(153, 69, 255, 0.4));
 }
 
 .tech-name {
