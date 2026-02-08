@@ -4,7 +4,7 @@ use anchor_spl::token::{self, Mint, Token, TokenAccount, Transfer};
 declare_id!("F7TehQFrx3XkuMsLPcmKLz44UxTWWfyodNLSungdqoRX");
 
 #[program]
-pub mod solana_agent_colosseum {
+pub mod zephyr {
     use super::*;
 
     pub fn initialize_agent(ctx: Context<InitializeAgent>, agent_id: u64) -> Result<()> {

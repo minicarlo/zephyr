@@ -56,7 +56,7 @@ Then visit `http://localhost:8000`
 
 ## Customization
 
-- Update GitHub links in `index.html` (search for `minicarlo/solana-agent-colosseum`)
+- Update GitHub links in `index.html` (already updated to `minicarlo/zephyr`)
 - Replace email address `contact@example.com` with your actual contact
 - Add demo video by replacing the `.demo-placeholder` section
 - Customize colors in `:root` variables in `styles.css`

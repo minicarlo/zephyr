@@ -4,7 +4,7 @@ import express from 'express';
 import cors from 'cors';
 
 async function main() {
-    console.log('🚀 Initializing Solana Agent Colosseum...');
+    console.log('🚀 Initializing Zephyr...');
     
     // Initialize Solana connection
     const connection = new Connection('https://api.devnet.solana.com', 'confirmed');
@@ -59,14 +59,14 @@ async function main() {
         console.log(`📊 Agent dashboard: http://localhost:${PORT}/demo.html`);
     });
     
-    console.log('✅ Solana Agent Colosseum is now running!');
+    console.log('✅ Zephyr is now running!');
     console.log(`🔑 Agent ID: 769`);
     console.log(`💰 Wallet: ${keypair.publicKey.toString()}`);
 }
 
 // Handle graceful shutdown
 process.on('SIGINT', () => {
-    console.log('👋 Shutting down Solana Agent Colosseum...');
+    console.log('👋 Shutting down Zephyr...');
     process.exit(0);
 });
 

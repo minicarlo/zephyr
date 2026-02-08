@@ -1,12 +1,12 @@
 [package]
-name = "solana-agent-colosseum"
+name = "zephyr"
 version = "0.1.0"
 description = "AI-Powered Solana Agent - Intelligent DeFi automation"
 edition = "2021"
 
 [lib]
 crate-type = ["cdylib", "lib"]
-name = "solana_agent_colosseum"
+name = "zephyr"
 
 [features]
 no-entrypoint = []

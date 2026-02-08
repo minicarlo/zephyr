@@ -3,10 +3,10 @@ seeds = false
 skip-lint = false
 
 [programs.localnet]
-solana_agent_colosseum = "F7TehQFrx3XkuMsLPcmKLz44UxTWWfyodNLSungdqoRX"
+zephyr = "F7TehQFrx3XkuMsLPcmKLz44UxTWWfyodNLSungdqoRX"
 
 [programs.devnet]
-solana_agent_colosseum = "F7TehQFrx3XkuMsLPcmKLz44UxTWWfyodNLSungdqoRX"
+zephyr = "F7TehQFrx3XkuMsLPcmKLz44UxTWWfyodNLSungdqoRX"
 
 [registry]
 url = "https://api.apr.dev"

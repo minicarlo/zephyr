@@ -111,7 +111,7 @@ zephyr/
 **Language:** Rust with Anchor framework
 
 **Current Status:**
-- Directory name needs update to `zephyr`
+- ✅ Directory renamed from solana-agent-colosseum to zephyr
 - Contains Cargo.toml and source code
 
 **Typical Functions:**
@@ -307,7 +307,7 @@ npm run build  # or yarn build
 - [ ] Enable GitHub Pages
 - [ ] Add demo video
 - [ ] Update contact email
-- [ ] Rename programs directory
+- [x] Rename programs directory ✅
 
 ### Medium-term (Post-Hackathon)
 - [ ] Add unit tests
