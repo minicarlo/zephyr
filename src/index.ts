@@ -4,6 +4,7 @@ import express from 'express';
 import cors from 'cors';
 import { PythPriceFeed } from './pyth.js';
 import { JupiterSwap } from './jupiter.js';
+import { ZephyrProgram } from './program.js';
 
 async function main() {
     console.log('🚀 Initializing Zephyr...');
@@ -18,6 +19,11 @@ async function main() {
     // Initialize Jupiter swap
     const jupiterSwap = new JupiterSwap(connection);
     console.log('🪐 Jupiter swap initialized');
+    
+    // Initialize Zephyr program
+    const zephyrProgram = new ZephyrProgram(connection);
+    console.log('⚓ Zephyr program initialized');
+    console.log(`📋 Program ID: ${zephyrProgram.getProgramId()}`);
     
     // Load keypair (in production, this would be more secure)
     const keypair = Keypair.generate(); // For demo purposes
@@ -117,6 +123,114 @@ async function main() {
             available: jupiterSwap.getAvailableTokens(),
             network: 'devnet'
         });
+    });
+    
+    // Zephyr Program Endpoints
+    
+    // Initialize agent
+    app.post('/agent/initialize', async (req, res) => {
+        try {
+            const { agentId } = req.body;
+            const keypair = Keypair.generate();
+            
+            const result = await zephyrProgram.initializeAgent(agentId, keypair.publicKey);
+            
+            res.json({
+                success: true,
+                signature: result.signature,
+                agentState: result.agentState,
+                programId: zephyrProgram.getProgramId()
+            });
+        } catch (error) {
+            res.status(500).json({ error: error.message });
+        }
+    });
+    
+    // Get agent state
+    app.get('/agent/:agentId', async (req, res) => {
+        try {
+            const agentId = parseInt(req.params.agentId);
+            const agentState = await zephyrProgram.getAgentState(agentId);
+            
+            res.json({
+                agentId,
+                programId: zephyrProgram.getProgramId(),
+                state: agentState
+            });
+        } catch (error) {
+            res.status(500).json({ error: error.message });
+        }
+    });
+    
+    // Execute trade
+    app.post('/agent/:agentId/trade', async (req, res) => {
+        try {
+            const agentId = parseInt(req.params.agentId);
+            const { pair, amount, type } = req.body;
+            
+            // Get real price from Pyth
+            const price = await pythFeed.getPriceForPair(pair);
+            
+            // Get Jupiter quote
+            const quote = await jupiterSwap.getQuoteForPair(
+                pair.split('/')[0],
+                pair.split('/')[1],
+                amount
+            );
+            
+            // Execute on program
+            const trade = {
+                pair,
+                amount: parseFloat(amount),
+                type,
+                price: price?.price || 0,
+                timestamp: new Date().toISOString()
+            };
+            
+            const result = await zephyrProgram.executeTrade(agentId, trade);
+            
+            res.json({
+                success: true,
+                signature: result.signature,
+                trade: result.trade,
+                quote,
+                agentState: result.agentState,
+                programId: zephyrProgram.getProgramId()
+            });
+        } catch (error) {
+            res.status(500).json({ error: error.message });
+        }
+    });
+    
+    // Get all agents
+    app.get('/agents', async (req, res) => {
+        res.json({
+            agents: zephyrProgram.getAllAgents(),
+            programId: zephyrProgram.getProgramId()
+        });
+    });
+    
+    // Get system status
+    app.get('/system/status', async (req, res) => {
+        try {
+            const slot = await connection.getSlot();
+            const blockTime = await connection.getBlockTime(slot);
+            
+            res.json({
+                status: 'operational',
+                network: 'devnet',
+                slot,
+                blockTime: blockTime ? new Date(blockTime * 1000).toISOString() : null,
+                programId: zephyrProgram.getProgramId(),
+                integrations: {
+                    pyth: true,
+                    jupiter: true,
+                    anchor: true
+                }
+            });
+        } catch (error) {
+            res.status(500).json({ error: error.message });
+        }
     });
     
     // Serve demo page
