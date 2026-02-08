@@ -3,6 +3,7 @@ import { AnchorProvider, Program, setProvider, Wallet } from '@project-serum/anc
 import express from 'express';
 import cors from 'cors';
 import { PythPriceFeed } from './pyth.js';
+import { JupiterSwap } from './jupiter.js';
 
 async function main() {
     console.log('🚀 Initializing Zephyr...');
@@ -13,6 +14,10 @@ async function main() {
     // Initialize Pyth price feed
     const pythFeed = new PythPriceFeed(connection);
     console.log('📡 Pyth price feed initialized');
+    
+    // Initialize Jupiter swap
+    const jupiterSwap = new JupiterSwap(connection);
+    console.log('🪐 Jupiter swap initialized');
     
     // Load keypair (in production, this would be more secure)
     const keypair = Keypair.generate(); // For demo purposes
@@ -80,6 +85,38 @@ async function main() {
         } catch (error) {
             res.status(500).json({ error: error.message });
         }
+    });
+    
+    // Get Jupiter swap quote
+    app.get('/quote/:from/:to/:amount', async (req, res) => {
+        try {
+            const { from, to, amount } = req.params;
+            const slippage = parseInt(req.query.slippage) || 50;
+            
+            const quote = await jupiterSwap.getQuoteForPair(from, to, amount, slippage);
+            if (!quote) {
+                return res.status(404).json({ error: 'Quote not available' });
+            }
+            
+            res.json({
+                from,
+                to,
+                amount,
+                slippageBps: slippage,
+                quote,
+                timestamp: new Date().toISOString()
+            });
+        } catch (error) {
+            res.status(500).json({ error: error.message });
+        }
+    });
+    
+    // Get available tokens
+    app.get('/tokens', async (req, res) => {
+        res.json({
+            available: jupiterSwap.getAvailableTokens(),
+            network: 'devnet'
+        });
     });
     
     // Serve demo page
