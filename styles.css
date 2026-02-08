@@ -556,9 +556,56 @@ body {
 
 .level.info { color: #3B82F6; }
 .level.success { color: var(--primary); }
+.level.warn { color: #F59E0B; }
+.level.system { color: #9945FF; }
 
 .message {
     color: var(--text-secondary);
+}
+
+/* Live Terminal Demo Styles */
+.terminal-line.highlight {
+    animation: highlightPulse 0.5s ease;
+}
+
+.terminal-line.profit {
+    background: rgba(20, 241, 149, 0.1);
+    border-radius: 4px;
+    padding: 2px 8px;
+    margin-left: -8px;
+}
+
+.terminal-line.loss {
+    background: rgba(255, 95, 86, 0.1);
+    border-radius: 4px;
+    padding: 2px 8px;
+    margin-left: -8px;
+}
+
+@keyframes highlightPulse {
+    0% { background: transparent; }
+    50% { background: rgba(20, 241, 149, 0.2); }
+    100% { background: transparent; }
+}
+
+.demo-status {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 1rem;
+    padding: 0.5rem 1rem;
+    background: rgba(20, 241, 149, 0.1);
+    border: 1px solid var(--primary);
+    border-radius: 2rem;
+    font-size: 0.875rem;
+}
+
+.demo-status .pulse {
+    width: 8px;
+    height: 8px;
+    background: var(--primary);
+    border-radius: 50%;
+    animation: pulse 2s infinite;
 }
 
 /* CTA Section */
