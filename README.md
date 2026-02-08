@@ -1,5 +1,6 @@
 # Zephyr - Autonomous DeFi Agent
 
+[![Website](https://img.shields.io/badge/🌐_Live_Demo-Visit_Now-14F195?style=for-the-badge)](https://minicarlo.github.io/zephyr/)
 [![Colosseum](https://img.shields.io/badge/Colosseum-Submitted-success)](https://colosseum.com/projects/zephyr)
 [![Solana](https://img.shields.io/badge/Solana-Devnet-14F195)](https://solana.com)
 [![License](https://img.shields.io/badge/License-MIT-blue)](LICENSE)
@@ -8,9 +9,18 @@
 
 Built for Colosseum Hackathon 2026 🏆
 
-🔗 **Live Demo:** https://minicarlo.github.io/zephyr/  
-🔗 **Submission:** https://colosseum.com/projects/zephyr  
-🔗 **GitHub:** https://github.com/minicarlo/zephyr
+## 🌐 Try It Live
+
+**👉 https://minicarlo.github.io/zephyr/**
+
+Experience the interactive terminal demo, real-time price feeds, and professional landing page.
+
+---
+
+**Links:**  
+🔗 **Live Website:** https://minicarlo.github.io/zephyr/  
+🔗 **Colosseum Submission:** https://colosseum.com/projects/zephyr  
+🔗 **Source Code:** https://github.com/minicarlo/zephyr
 
 ---
 
@@ -87,6 +97,28 @@ npm start
 ```
 
 Server runs on `http://localhost:3000`
+
+---
+
+## 🌐 Live Website
+
+**Production deployment:** https://minicarlo.github.io/zephyr/
+
+### Features:
+- 🎨 **Professional Landing Page** - Dark theme with Solana-inspired gradients
+- ⚡ **Interactive Terminal Demo** - Live trading simulation with real-time output
+- 📊 **Protocol Logos** - Authentic Solana, Jupiter, Pyth, and Anchor branding
+- 📱 **Responsive Design** - Works on desktop, tablet, and mobile
+- 🔗 **GitHub Integration** - Direct links to source code and documentation
+
+### What You'll See:
+1. **Hero Section** - Animated introduction with key stats
+2. **Features Grid** - 6 core capabilities with icons
+3. **Tech Stack** - Partner logos with hover effects
+4. **Live Terminal** - Scroll to activate the demo (shows simulated trading)
+5. **Call-to-Action** - GitHub and demo links
+
+**No installation required** — visit the URL and the demo works immediately!
 
 ---
 
